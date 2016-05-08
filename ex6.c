@@ -8,6 +8,9 @@ int main(int argc, char *argv[])
   char initial = 'R';
   char first_name[] = "Jonathan";
   char last_name[] = "Frederick";
+  int my_octal = 023;
+  int my_hex = 0x23;
+  int letter_hex = 0xabc;
 
   printf("You are %d miles away.\n", distance);
   printf("You have %f levels of power.\n", power);
@@ -17,6 +20,14 @@ int main(int argc, char *argv[])
   printf("I have a last name %s.\n", last_name);
   printf("My whole name is %s %c. %s.\n",
          first_name, initial, last_name);
+  printf("This is the octal 023 as an octal - %o.\n", my_octal);
+  printf("This is the octal 023 as an int- %d.\n", my_octal);
+  printf("This is the hex 0x23 as a hex - %x.\n", my_hex);
+  printf("This is the hex 0x23 as an int - %d.\n", my_hex);
+  printf("A hex with uppercase letters - %x.\n", letter_hex);
+  printf("A hex with lowercase letters - %X.\n", letter_hex);
+  printf("The same hex in decimal - %d.\n", letter_hex);
+  printf("");
 
   return 0;
 }
