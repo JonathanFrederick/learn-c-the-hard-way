@@ -29,8 +29,27 @@ int main(int argc, char *argv[])
   printf("The number of chars: %ld\n",
          sizeof(full_name) / sizeof(char));
 
+  printf("name=\"%s\" and full_name=\"%s\"\n\n",
+         name, full_name);
+
+  printf("The first area is %d, the 2nd is %d.\n",
+         areas[0], areas[1]);
+  areas[0] = 20;
+  areas[1]= 24;
+  printf("The new first area is %d, the 2nd is %d.\n\n",
+         areas[0], areas[1]);
+
   printf("name=\"%s\" and full_name=\"%s\"\n",
          name, full_name);
+  name[1] = 'a';
+  full_name[1] = 'a';
+  printf("NEW\nname=\"%s\" and full_name=\"%s\"\n",
+         name, full_name);
+
+  name[2] = areas[4];
+  printf("NEW WITH ASSIGNED INT\nname=\"%s\" and full_name=\"%s\"\n\n",
+         name, full_name);
+
 
   return 0;
 }
