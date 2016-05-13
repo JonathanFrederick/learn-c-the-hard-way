@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 
 
   // first print them out raw
-  print_nums(numbers);
+  print_nums(numbers);  // TODO: fix compiler warnings
   print_name(name);
 
   // setup the numbers
@@ -30,16 +30,41 @@ int main(int argc, char *argv[])
   char *another = "Jon";
 
   printf("another %s\n", another);
-  printf("another each %c %c %c %c\n",
+  printf("another each %c %c %c %c\n\n",
          another[0], another[1],
          another[2], another[3]);
+
+  // EXTRA CREDIT
+  numbers[0] = 'a';
+  numbers[1] = 'b';
+  numbers[2] = 'c';
+  numbers[3] = 'd';
+
+  printf("Characters in int array: %c %c %c %c\n",
+         numbers[0], numbers[1], numbers[2], numbers[3]);
+         //No compiler warnings???
+
+  name[0] = 1;
+  name[1] = 2;
+  name[2] = 3;
+  name[3] = 4;
+
+  printf("Ints in a char array: %d %d %d %d\n",
+         name[0], name[1], name[2], name[3]);
+         //No compiler warnings??
+
+  printf("Chars as int: %d\n", numbers);
+
+  char *new_name = "abcd";
+  printf("Chars as int: %d\n", new_name);
+
 
   return 0;
 }
 
 int print_nums(int nu[])
 {
-  printf(": %d %d %d %d\n",
+  printf("numbers each: %d %d %d %d\n",
          nu[0], nu[1], nu[2], nu[3]);
 
   return 0;
