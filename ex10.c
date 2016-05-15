@@ -25,6 +25,24 @@ int main(int argc, char *argv[])
     printf("state %d: %s\n", i, states[i]);
   }
 
+  printf("\n");
+
+  int j;
+  for (i=0, j=10; i < j; i++, j--) {
+    printf("i==%d and j==%d\n", i, j);
+  };
+
+  states[3] = NULL;
+  printf("\nstate 3 is %s\n", states[3]); // prints "(null)" at %s
+
+  argv[2] = states[2];
+  printf("states 2 in argv %s\n", argv[2]);  // prints as state
+
+  states[1] = argv[1];
+  printf("argv 1 in states %s\n", states[1]);  //prints as "(null)"
+
+
+
   return 0;
 
 }
