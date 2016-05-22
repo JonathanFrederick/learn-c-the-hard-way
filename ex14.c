@@ -1,30 +1,33 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <string.h>
 
 // forward declarations
 int can_print_it(char ch);
-void print_letters(char arg[]);
+void print_letters(char arg[], int l);
 
 // function to print each argument
 void print_arguments(int argc, char *argv[])
 {
   int i = 1;
+  int len;
 
   for(i = 0; i < argc; i++) {
-    print_letters(argv[i]);
+    len = strlen(argv[i]);
+    print_letters(argv[i], len);
   }
 }
 
 // function to print each letter of each argument
-void print_letters(char arg[])
+void print_letters(char arg[], int l)
 {
   int i = 0;
 
-  for(i = 0; arg[i] != '\0'; i++) {
+  for(i = 0; i < l; i++) {
     char ch = arg[i];
 
     // actually do the printing
-    if(can_print_it(ch)) {
+    if(isalpha(ch) || isblank(ch)) {
       printf("'%c' == %d \n", ch, ch);
     }
   }
