@@ -13,8 +13,9 @@ void print_arguments(int argc, char *argv[])
   int len;
 
   for(i = 0; i < argc; i++) {
+    // not changing pointers because that would break strlen
     len = strlen(argv[i]);
-    print_letters(argv[i], len);
+    print_letters(*(argv + i), len);
   }
 }
 
@@ -22,9 +23,9 @@ void print_arguments(int argc, char *argv[])
 void print_letters(char arg[], int l)
 {
   int i = 0;
-
+  char *cur_char = arg;
   for(i = 0; i < l; i++) {
-    char ch = arg[i];
+    char ch = *(cur_char + i);
 
     // actually do the printing
     if(isalpha(ch) || isblank(ch)) {
