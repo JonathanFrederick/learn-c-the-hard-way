@@ -112,7 +112,11 @@ void Database_set(struct Connection *conn, int id, const char *name, const char 
 
   addr->set = 1;
   // TODO: WARNING: bug, read the "How to Break It" and fix this
-  char *res = strncpy(addr->email, email, MAX_DATA);
+  char *res = strncpy(addr->name, name, MAX_DATA);
+  // demonstrate the strncpy bug
+  if(!res) die("Name copy failed", conn);
+
+  res = strncpy(addr->email, email, MAX_DATA);
   if(!res) die("Email copy failed", conn);
 }
 
@@ -131,6 +135,20 @@ void Database_delete(struct Connection *conn, int id)
 {
   struct Address addr = {.id = id, .set = 0};  // make a blank address
   conn->db->rows[id] = addr;  //save the blank address to the db location
+}
+
+void Database_find(struct Connection *conn, char st[])
+{
+  int i = 0;
+  struct Database *db = conn->db;
+
+  for(i = 0; i < MAX_ROWS; i++) {
+    struct Address *cur = &db->rows[i];
+
+    if(strstr(cur->name, st)) {
+      Address_print(cur);
+    }
+  }
 }
 
 void Database_list(struct Connection *conn)
@@ -188,6 +206,10 @@ int main(int argc, char *argv[])
 
     case 'l':
       Database_list(conn);
+      break;
+
+    case 'f':
+      Database_find(conn, argv[3]);
       break;
     default:
       die("Invalid action, only: c=create, g=get, s=set, d=del, l=list", conn);

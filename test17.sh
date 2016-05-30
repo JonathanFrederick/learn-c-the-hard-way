@@ -15,6 +15,12 @@ echo ENTRIES PRINTED
 ./ex17 test.dat g 1
 echo ENTRY 1 PRINTED
 
+./ex17 test.dat f alex
+echo ENTRY CONTAINING \"alex\" PRINTED
+
+./ex17 test.dat f o
+echo ENTRY CONTAINING CHARACTER \'o\' PRINTED
+
 ./ex17 test.dat d 1
 ./ex17 test.dat d 2
 ./ex17 test.dat d 3
